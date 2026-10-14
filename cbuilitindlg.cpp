@@ -77,4 +77,18 @@ void CBuilitinDlg::doPushBtn()
             displayTextEdit->setTextColor(color);
     }
 }
+        if (btn==progressPushBtn){
+    QProgressDialog progress ("複製檔案中.....","取消",0,10000,this);
+            progress.setWindowTitle("進度對話盒展示");
+            progress.show();
+            for(int i=0;i<10000;i++){
+                progress.setValue(i);
+                qApp->processEvents();
+                if(progress.wasCanceled())
+                    break;
+                qDebug()<<i;
+            }
+            progress.setValue(10000);
+        }
+
     }
